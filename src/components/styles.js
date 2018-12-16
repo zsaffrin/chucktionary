@@ -21,4 +21,7 @@ export const spacing = {
 export const headings = {
   margin: 0,
   lineHeight: '1.15',
+  textTransform: 'uppercase',
+  letterSpacing: 3,
+  textAlign: 'center',
 }

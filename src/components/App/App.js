@@ -1,9 +1,9 @@
 import React from 'react'
-import { headings } from "../styles";
+import Header from '../Header/Header'
 
 const App = () => {
   return <div>
-      <h1 style={headings}>Chucktionary</h1>
+      <Header />
     </div>;
 }
 
