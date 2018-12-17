@@ -1,15 +1,15 @@
-import React from 'react'
-import { Router } from '@reach/router'
-import Home from './Home/Home'
-import Spellingz from "./Pages/Spellingz";
+import React from 'react';
+import { Router } from '@reach/router';
+import Home from './Home/Home';
+import Spellingz from './Pages/Spellingz';
 
-const Content = () => {
+const Content = ({ collections }) => {
   return (
     <Router>
       <Home path="/" />
-      <Spellingz path="/spellingz" />
+      <Spellingz path="/spellingz" data={collections.spellingz} />
     </Router>
-  )
-}
+  );
+};
 
-export default Content
+export default Content;

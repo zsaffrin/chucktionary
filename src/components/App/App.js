@@ -1,21 +1,48 @@
-import React from 'react'
-import Header from '../Header/Header'
-import Content from '../Content/Content'
+import React, { Component } from 'react';
+import axios from 'axios';
+import Header from '../Header/Header';
+import Default from '../Default/Default';
+import Content from '../Content/Content';
 
-const App = () => {
-  const styles = {
-    page: {
-      display: 'grid',
-      gridTemplateRows: 'auto 1fr',
-      height: '100vh',
-      width: '100vw',
-    },
+class App extends Component {
+  state = {
+    collections: {},
+    isLoading: false,
+  };
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    axios.get('/api/v1/').then(res => {
+      this.setState({
+        collections: res.data,
+        isLoading: false,
+      });
+    });
   }
 
-  return <div style={styles.page}>
-      <Header />
-      <Content />
-    </div>;
+  render() {
+    const { collections, isLoading } = this.state;
+
+    const styles = {
+      page: {
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr',
+        height: '100vh',
+        width: '100vw',
+      },
+    };
+
+    return (
+      <div style={styles.page}>
+        <Header />
+        {Object.keys(collections).length === 0 ? (
+          <Default loading={isLoading} />
+        ) : (
+          <Content collections={collections} />
+        )}
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;

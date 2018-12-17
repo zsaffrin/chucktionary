@@ -4,10 +4,13 @@
   "author": "Zach Saffrin <zach@zachsaffrin.com> (http://zachsaffrin.com)",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "axios": "^0.18.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
+  "proxy": "https://chucktionapi.firebaseapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

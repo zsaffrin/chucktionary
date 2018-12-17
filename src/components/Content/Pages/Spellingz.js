@@ -1,6 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const Spellingz = () => {
+const Spellingz = ({ data }) => {
+  const item = data[Object.keys(data)[0]] || {
+    chuckWord: 'chuckWord',
+    intendedWord: 'intendedWord',
+  };
+  const { chuckWord, intendedWord } = item;
+
   const styles = {
     page: {
       display: 'grid',
@@ -12,12 +18,14 @@ const Spellingz = () => {
       display: 'grid',
       justifyContent: 'center',
     },
-  }
+  };
 
-  return <div style={styles.page}>
-      <div style={styles.pageHalf}>Spellingz A</div>
-      <div style={styles.pageHalf}>Spellingz B</div>
-    </div>;
-}
+  return (
+    <div style={styles.page}>
+      <div style={styles.pageHalf}>{chuckWord}</div>
+      <div style={styles.pageHalf}>{intendedWord}</div>
+    </div>
+  );
+};
 
-export default Spellingz
+export default Spellingz;
