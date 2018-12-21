@@ -8,6 +8,7 @@ const Content = ({ collections }) => {
     <Router>
       <Home path="/" />
       <Spellingz path="/spellingz" data={collections.spellingz} />
+      <Spellingz path="/spellingz/:id" data={collections.spellingz} />
     </Router>
   );
 };
