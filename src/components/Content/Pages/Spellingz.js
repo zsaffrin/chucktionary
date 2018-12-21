@@ -43,12 +43,33 @@ class Spellingz extends Component {
         display: 'grid',
         justifyContent: 'center',
       },
+      content: {
+        textAlign: 'center',
+      },
+      title: {
+        fontSize: '.8em',
+        textTransform: 'uppercase',
+      },
+      value: {
+        fontSize: '3em',
+        fontWeight: 'bold',
+      },
     };
 
     return (
       <div style={styles.page}>
-        <div style={styles.pageHalf}>{chuckWord}</div>
-        <div style={styles.pageHalf}>{intendedWord}</div>
+        <div style={styles.pageHalf}>
+          <div style={styles.content}>
+            <div style={styles.title}>Chuck</div>
+            <div style={styles.value}>{chuckWord}</div>
+          </div>
+        </div>
+        <div style={styles.pageHalf}>
+          <div style={styles.content}>
+            <div style={styles.title}>Intended</div>
+            <div style={styles.value}>{intendedWord}</div>
+          </div>
+        </div>
       </div>
     );
   }
