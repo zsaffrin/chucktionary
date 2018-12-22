@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SubNav from '../SubNav/SubNav';
 
 export class Favorites extends Component {
   state = {
@@ -9,6 +10,12 @@ export class Favorites extends Component {
     const { id, data } = this.props;
     id ? this.setNewItem(data[id]) : this.setRandomItem(data);
   }
+
+  setItemById = id => {
+    const { data } = this.props;
+    const item = data[id];
+    this.setNewItem(item);
+  };
 
   setRandomItem = data => {
     const keys = Object.keys(data);
@@ -25,6 +32,7 @@ export class Favorites extends Component {
 
   render() {
     const { thing } = this.state.currentThing;
+    const { data } = this.props;
 
     const styles = {
       page: {
@@ -44,11 +52,14 @@ export class Favorites extends Component {
     };
 
     return (
-      <div style={styles.page}>
-        <div style={styles.content}>
-          <div style={styles.value}>{thing}</div>
+      <>
+        <SubNav updater={this.setItemById} data={data} />
+        <div style={styles.page}>
+          <div style={styles.content}>
+            <div style={styles.value}>{thing}</div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

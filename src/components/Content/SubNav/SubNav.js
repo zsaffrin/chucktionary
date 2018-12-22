@@ -9,7 +9,8 @@ const SubNav = ({ updater, data }) => {
 
   const styles = {
     section: {
-      background: '#e5f5c4',
+      display: 'grid',
+      justifyContent: 'center',
     },
   };
 
