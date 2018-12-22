@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SubNav from '../SubNav/SubNav';
 
 class Spellingz extends Component {
   state = {
@@ -12,6 +13,12 @@ class Spellingz extends Component {
     const { id, data } = this.props;
     id ? this.setNewItem(data[id]) : this.setRandomItem(data);
   }
+
+  setItemById = id => {
+    const { data } = this.props;
+    const item = data[id];
+    this.setNewItem(item);
+  };
 
   setRandomItem = data => {
     const keys = Object.keys(data);
@@ -31,6 +38,7 @@ class Spellingz extends Component {
 
   render() {
     const { chuckWord, intendedWord } = this.state.currentItem;
+    const { data } = this.props;
 
     const styles = {
       page: {
@@ -57,20 +65,23 @@ class Spellingz extends Component {
     };
 
     return (
-      <div style={styles.page}>
-        <div style={styles.pageHalf}>
-          <div style={styles.content}>
-            <div style={styles.title}>Chuck</div>
-            <div style={styles.value}>{chuckWord}</div>
+      <>
+        <SubNav updater={this.setItemById} data={data} />
+        <div style={styles.page}>
+          <div style={styles.pageHalf}>
+            <div style={styles.content}>
+              <div style={styles.title}>Chuck</div>
+              <div style={styles.value}>{chuckWord}</div>
+            </div>
+          </div>
+          <div style={styles.pageHalf}>
+            <div style={styles.content}>
+              <div style={styles.title}>Intended</div>
+              <div style={styles.value}>{intendedWord}</div>
+            </div>
           </div>
         </div>
-        <div style={styles.pageHalf}>
-          <div style={styles.content}>
-            <div style={styles.title}>Intended</div>
-            <div style={styles.value}>{intendedWord}</div>
-          </div>
-        </div>
-      </div>
+      </>
     );
   }
 }
