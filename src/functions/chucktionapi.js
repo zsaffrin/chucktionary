@@ -6,4 +6,7 @@ exports.handler = async (event, context) =>
   axios
     .get(API_ENDPOINT)
     .then(res => ({ statusCode: 200, body: res.data }))
-    .catch(err => ({ statusCode: 422, body: String(err) }));
+    .catch(err => {
+      console.error(err);
+      return { statusCode: 422, body: String(err) };
+    });
