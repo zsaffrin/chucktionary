@@ -12,12 +12,15 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    axios.get('/.netlify/functions/chucktionapi').then(res => {
-      this.setState({
-        collections: res.data,
-        isLoading: false,
-      });
-    });
+    axios
+      .get('/.netlify/functions/chucktionapi')
+      .then(res => {
+        this.setState({
+          collections: res.data,
+          isLoading: false,
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
