@@ -6,6 +6,7 @@ const NavLink = props => {
   const styles = {
     link: {
       display: 'block',
+      color: 'inherit',
       fontSize: '.9em',
       padding: `${spacing.s1}px ${spacing.s3}px`,
       textDecoration: 'none',
@@ -25,8 +26,8 @@ const NavLink = props => {
       getProps={({ isCurrent }) => ({
         style: isCurrent
           ? {
-              ...styles.active,
               ...styles.link,
+              ...styles.active,
             }
           : {
               ...styles.link,
