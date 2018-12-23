@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 const API_ENDPOINT = 'https://chucktionapi.firebaseapp.com/api/v1/';
 
