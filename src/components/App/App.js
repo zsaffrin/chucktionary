@@ -12,7 +12,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    axios.get('https://chucktionapi.firebaseapp.com/api/v1/').then(res => {
+    axios.get('/api/v1/').then(res => {
       this.setState({
         collections: res.data,
         isLoading: false,
