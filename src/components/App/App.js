@@ -12,7 +12,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    axios.get('/api/v1/').then(res => {
+    axios.get('/.netlify/functions/chucktionapi').then(res => {
       this.setState({
         collections: res.data,
         isLoading: false,

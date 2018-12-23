@@ -11,7 +11,6 @@
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
-  "proxy": "https://chucktionapi.firebaseapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
