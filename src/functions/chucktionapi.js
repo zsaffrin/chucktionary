@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const API_ENDPOINT = 'https://chucktionapi.firebaseapp.com/api/v1/';
 
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
   try {
     const response = await axios.get(API_ENDPOINT);
     if (!response.ok) {
@@ -21,4 +21,4 @@ exports.handler = async (event, context) => {
       body: String(err),
     };
   }
-};
+}
