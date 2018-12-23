@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_ENDPOINT = 'https://chucktionapi.firebaseapp.com/api/v1/';
 
 exports.handler = async (event, context) =>
-  axios
+  await axios
     .get(API_ENDPOINT)
     .then(res => ({ statusCode: 200, body: res.data }))
     .catch(err => {
