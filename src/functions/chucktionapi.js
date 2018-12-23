@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 const API_ENDPOINT = 'https://chucktionapi.firebaseapp.com/api/v1/';
 
 exports.handler = async function(event, context) {
