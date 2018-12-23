@@ -16,7 +16,7 @@ const NavLink = props => {
     },
   };
 
-  const { isCurrent, label, target } = props;
+  const { label, target } = props;
 
   return (
     <Link

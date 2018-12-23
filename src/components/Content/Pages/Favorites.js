@@ -1,62 +1,66 @@
 import React, { Component } from 'react';
 import SubNav from '../SubNav/SubNav';
 
-export class Favorites extends Component {
+class Favorites extends Component {
   state = {
-    currentThing: {},
+    currentItem: '',
   };
 
   componentDidMount() {
-    const { id, data } = this.props;
-    id ? this.setNewItem(data[id]) : this.setRandomItem(data);
+    const { data } = this.props;
+    const randomItem = this.getRandomKey(data);
+    this.setNewItem(randomItem);
   }
 
-  setItemById = id => {
-    const { data } = this.props;
-    const item = data[id];
-    this.setNewItem(item);
+  getRandomKey = obj => {
+    const keys = Object.keys(obj);
+    const randomKey = obj[keys[Math.floor(Math.random() * keys.length)]];
+    return randomKey;
   };
 
-  setRandomItem = data => {
-    const keys = Object.keys(data);
-    const item = data[keys[Math.floor(Math.random() * keys.length)]];
-    this.setNewItem(item);
-  };
-
-  setNewItem = newThing => {
-    newThing &&
-      this.setState({
-        currentThing: newThing,
-      });
+  setNewItem = newItem => {
+    this.setState({
+      currentItem: newItem.thing,
+    });
   };
 
   render() {
-    const { thing } = this.state.currentThing;
+    const { currentItem } = this.state;
     const { data } = this.props;
 
     const styles = {
       page: {
         display: 'grid',
-        alignItems: 'center',
+        gridTemplateRows: 'auto auto',
         height: '100%',
+      },
+      pageHalf: {
+        alignItems: 'center',
+        display: 'grid',
         justifyContent: 'center',
       },
       content: {
-        padding: '1em',
+        padding: '1.5em',
         textAlign: 'center',
       },
+      title: {
+        fontSize: '.8em',
+        textTransform: 'uppercase',
+      },
       value: {
-        fontSize: '2em',
+        fontSize: '3em',
         fontWeight: 'bold',
       },
     };
 
     return (
       <>
-        <SubNav updater={this.setItemById} data={data} />
+        <SubNav updater={this.setNewItem} data={data} />
         <div style={styles.page}>
-          <div style={styles.content}>
-            <div style={styles.value}>{thing}</div>
+          <div style={styles.pageHalf}>
+            <div style={styles.content}>
+              <div style={styles.value}>{currentItem}</div>
+            </div>
           </div>
         </div>
       </>

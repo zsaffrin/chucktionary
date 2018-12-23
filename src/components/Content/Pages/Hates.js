@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import SubNav from '../SubNav/SubNav';
 
-class Spellingz extends Component {
+class Hates extends Component {
   state = {
-    currentItem: {
-      chuckWord: '',
-      intendedWord: '',
-    },
+    currentItem: '',
   };
 
   componentDidMount() {
@@ -23,12 +20,12 @@ class Spellingz extends Component {
 
   setNewItem = newItem => {
     this.setState({
-      currentItem: newItem,
+      currentItem: newItem.thing,
     });
   };
 
   render() {
-    const { chuckWord, intendedWord } = this.state.currentItem;
+    const { currentItem } = this.state;
     const { data } = this.props;
 
     const styles = {
@@ -62,14 +59,7 @@ class Spellingz extends Component {
         <div style={styles.page}>
           <div style={styles.pageHalf}>
             <div style={styles.content}>
-              <div style={styles.title}>Chuck</div>
-              <div style={styles.value}>{chuckWord}</div>
-            </div>
-          </div>
-          <div style={styles.pageHalf}>
-            <div style={styles.content}>
-              <div style={styles.title}>Intended</div>
-              <div style={styles.value}>{intendedWord}</div>
+              <div style={styles.value}>{currentItem}</div>
             </div>
           </div>
         </div>
@@ -78,4 +68,4 @@ class Spellingz extends Component {
   }
 }
 
-export default Spellingz;
+export default Hates;

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import Button from '../../../shared/Button';
+import { colors } from '../../styles';
 
 const SubNav = ({ updater, data }) => {
   const getRandomKey = obj => {
     const keys = Object.keys(obj);
-    return keys[Math.floor(Math.random() * keys.length)];
+    const randomKey = obj[keys[Math.floor(Math.random() * keys.length)]];
+    return randomKey;
   };
 
   const styles = {
@@ -16,7 +18,12 @@ const SubNav = ({ updater, data }) => {
 
   return (
     <section style={styles.section}>
-      <button onClick={() => updater(getRandomKey(data))}>Another</button>
+      <Button
+        background={colors.darkViolet}
+        click={() => updater(getRandomKey(data))}
+        text="Another"
+        textColor={colors.white}
+      />
     </section>
   );
 };
