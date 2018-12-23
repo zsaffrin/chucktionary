@@ -1,10 +1,10 @@
-const fetch = require('node-fetch');
+import axios from 'axios';
 
 const API_ENDPOINT = 'https://chucktionapi.firebaseapp.com/api/v1/';
 
-exports.handler = async function(event, context) {
+exports.handler = async (event, context) => {
   try {
-    const response = await fetch(API_ENDPOINT);
+    const response = await axios.get(API_ENDPOINT);
     if (!response.ok) {
       return { statusCode: response.status, body: response.statusText };
     }
